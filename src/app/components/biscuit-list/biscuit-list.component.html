@@ -6,7 +6,7 @@
     </div>
 </ng-container>
 <ng-container *ngIf="!isLoading">
-    <div *ngIf="biscuits != []" class="row ">
+    <div *ngIf="biscuits != []" class="row container-fluid">
         <div class="col-12 my-3 text-center">
             <h3 class=" mb-3" *ngIf="url == '/biscuits'">Tous les biscuits</h3>
             <h3 class=" mb-3" *ngIf="regExType.test(url)">Biscuits au {{type}}</h3>
