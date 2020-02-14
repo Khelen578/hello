@@ -1,6 +1,7 @@
 <div class="container my-5 border p-5">
     <form #biscuitValidation="ngForm" (ngSubmit)="onSubmit()">
-        <h3 class=" mb-5">Formulaire de création de biscuits <span *ngIf="type !== ''">au {{type}}</span></h3>
+        <h3 class=" mb-5 text-center">Formulaire de création de biscuits <span *ngIf="type !== ''">au {{type}}</span>
+        </h3>
         <div class="form-group">
             <label for=" name">Nom du biscuit</label>
             <input type="text" required name="name" id="name" class="form-control" [(ngModel)]="formBiscuit.nom"
