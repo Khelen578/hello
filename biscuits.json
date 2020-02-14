@@ -1,0 +1,40 @@
+{
+  "biscuits": [
+    {
+      "nom": "Cookie",
+      "categorie": "chocolat",
+      "image": "assets/img/cookie.jpg",
+      "id": 1
+    },
+    {
+      "nom": "Sablé Breton",
+      "categorie": "beurre",
+      "image": "assets/img/sablé-breton.jpg",
+      "id": 2
+    },
+    {
+      "nom": "Madeleine",
+      "categorie": "beurre",
+      "image": "assets/img/madeleine.jpg",
+      "id": 3
+    },
+    {
+      "nom": "Dorayaki",
+      "categorie": "fourrage anko",
+      "image": "assets/img/dorayaki.jpg",
+      "id": 5
+    },
+    {
+      "nom": "Taiyaki",
+      "categorie": "fourrage anko",
+      "image": "assets/img/taiyaki.jpeg",
+      "id": 6
+    },
+    {
+      "categorie": "chocolat",
+      "id": 7,
+      "nom": "Brownie",
+      "image": "assets/img/brownie.jpeg"
+    }
+  ]
+}

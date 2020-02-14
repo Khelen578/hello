@@ -1,0 +1,12 @@
+img{
+    width: 370px;
+    height: 200px;
+}
+img:hover{
+    cursor: pointer;
+}
+
+.selected{
+    border: 2px solid green;
+    border-radius: 0.3;
+}

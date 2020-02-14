@@ -1,0 +1,14 @@
+<div (mouseenter)="overStartEvent()" (mouseleave)="overEndEvent()" class="card p-2 mx-5 mb-3" style="width: 18rem;"
+    [ngClass]="overed ? 'selected' : 'border'">
+    <img class=" card-img-top img-fluid" [routerLink]="['/biscuit',biscuit.id]" [src]="biscuit.image"
+        alt="image de biscuit">
+    <div class="card-body">
+        <h5 class="card-title text-center">{{biscuit.nom}}</h5>
+        <p class="card-text">Délicieux biscuits au {{biscuit.categorie}}</p>
+        <a [routerLink]="['/biscuit',biscuit.id]" class="btn btn-block btn-primary">Voir {{biscuit.nom}}</a>
+        <a [routerLink]="['/biscuit-form-edit',biscuit.id]" class="btn btn-block btn-text-center btn-success">Editer
+            {{biscuit.nom}}</a>
+        <button (click)="onDeleteBiscuit(biscuit)" class="btn btn-block btn-outline-danger">Supprimer
+            {{biscuit.nom}}</button>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<ng-container *ngIf="isLoading">
+    <div>En chargement...</div>
+</ng-container>
+<ng-container *ngIf="!isLoading">
+    <div *ngIf="biscuits != []" class="row ml-1">
+        <div class="col-12 my-3">
+            <h3 class=" mb-3" *ngIf="url == '/biscuits'">Tous les biscuits</h3>
+            <h3 class=" mb-3" *ngIf="regExType.test(url)">Biscuits au {{type}}</h3>
+            <h3 class=" mb-3" *ngIf="regExName.test(url)">Resultats de la recherche "{{search}}"</h3><button
+                [routerLink]="(regExType.test(url)) ? ['/biscuit-form',type] : ['/biscuit-form','']"
+                class="btn btn-success mr-4 mb-3">Ajouter
+                un
+                biscuit</button><button *ngIf="!mobile" (click)="changeDisplay()" class="mb-3 btn btn-primary">Changer
+                Affichage</button>
+        </div>
+        <div class="row container-fluid" *ngIf="beautyDisplay">
+            <div *ngFor="let biscuit of biscuits" class="col-sm-4 col-lg-3 p-2 ml-4 mr-5 ">
+                <app-biscuit [biscuit]="biscuit" (deleteEmitter)="deleteBiscuit($event)">
+                </app-biscuit>
+            </div>
+        </div>
+
+        <table *ngIf="biscuits != null && !beautyDisplay"
+            class="table table-hover table-responsive  mx-auto p-5 table-bordered ">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Nom Biscuit</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Voir</th>
+                    <th scope="col">Editer</th>
+                    <th scope="col">Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let biscuit of biscuits">
+                    <td>{{biscuit.nom}}</td>
+                    <td>{{biscuit.categorie}}</td>
+                    <td><img [src]="biscuit.image" alt="image de biscuit"></td>
+                    <td><button class="btn  btn-sm" [routerLink]="['/biscuit',biscuit.id]">Voir</button>
+                    </td>
+                    <td><button class="btn  btn-sm" [routerLink]="['/biscuit-form-edit',biscuit.id]">Editer</button>
+                    </td>
+                    <td><button class="btn  btn-sm" (click)="deleteBiscuit(biscuit)">Supprimer</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="biscuits === null || biscuits.length === 0" class="my-3">
+        <div class="alert alert-danger text-center">Aucun biscuit à afficher !</div>
+    </div>
+</ng-container>

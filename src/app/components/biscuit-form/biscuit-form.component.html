@@ -1,0 +1,33 @@
+<div class="container my-5 border p-5">
+    <form #biscuitValidation="ngForm" (ngSubmit)="onSubmit()">
+        <h3 class=" mb-5">Formulaire de création de biscuits <span *ngIf="type !== ''">au {{type}}</span></h3>
+        <div class="form-group">
+            <label for=" name">Nom du biscuit</label>
+            <input type="text" required name="name" id="name" class="form-control" [(ngModel)]="formBiscuit.nom"
+                placeholder="nom" #name="ngModel">
+            <div *ngIf="!name.valid" class="alert alert-danger">Veuillez saisir le nom</div>
+
+        </div>
+        <div *ngIf="type === '' " class="form-group"> <label for="categorie">Categorie</label>
+            <select class="form-control" id="categorie" required [(ngModel)]="formBiscuit.categorie" name="categorie"
+                #categorie="ngModel">
+                <option value="" [selected]="!categorie.valid"> Choisissez une catégorie </option>
+                <option *ngFor="let categorie of categories" [value]="categorie">{{categorie}}
+                </option>
+            </select>
+            <div [hidden]="categorie.valid" class="alert alert-danger"> veuillez saisir la categorie du biscuit </div>
+        </div>
+        <div class="form-group">
+            <label for=" img">Image du biscuit</label>
+            <input type="text" required name="img" id="img" class="form-control" [(ngModel)]="formBiscuit.image"
+                placeholder="url de l'image" #img="ngModel">
+            <div *ngIf="!img.valid" class="alert alert-danger">Veuillez saisir l'url de l'image</div>
+        </div>
+        <div class="form-group">
+            <input [disabled]="!biscuitValidation.valid" type="submit" class="btn btn-block btn-success"
+                value="Créer le biscuit">
+        </div>
+
+    </form>
+    <button (click)="goBack()" class="btn btn-block  btn-primary">Retourner à la liste</button>
+</div>

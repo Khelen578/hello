@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary text-center">
+    <button (click)=" isCollapsed=!isCollapsed" class="navbar-toggler" type="button" data-toggle="collapse"
+        data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse text-center" id=" navbarTogglerDemo01" [collapse]="isCollapsed">
+        <a class="navbar-brand " (click)="onClick()" routerLink='/biscuits'>Application de biscuits</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 text-center">
+            <li class="nav-item" *ngFor="let categorie of categories">
+                <a class="nav-link " [routerLink]="['biscuits/type',categorie]" (click)="onClick()"
+                    routerLinkActive=" active">Au
+                    {{categorie}}</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0 text-center">
+            <input class=" form-control mr-sm-2 text-center" type="search" name="search"
+                placeholder="Rechercher un biscuit" aria-label="Search" required [(ngModel)]="search"
+                (keyup)="onSubmit()">
+        </form>
+    </div>
+</nav>

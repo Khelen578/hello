@@ -1,0 +1,8 @@
+<div class="card my-5 m-3 p-2 mx-auto" style="width: 18rem;">
+    <img class="card-img-top img-fluid" [src]="biscuit.image" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title text-center">{{biscuit.nom}}</h5>
+        <p class="card-text">Délicieux biscuits au {{biscuit.categorie}}.</p>
+        <button (click)="goBack()" class="btn btn-block btn-primary">Retourner à la liste</button>
+    </div>
+</div>
