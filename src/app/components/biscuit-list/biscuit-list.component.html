@@ -1,21 +1,22 @@
 <ng-container *ngIf="isLoading">
     <div style="margin-left: 50%;margin-top: 35% ;width: 3rem; height: 3rem;">
         <div class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
+            <span class="sr-only">Chargement...</span>
         </div>
     </div>
 </ng-container>
 <ng-container *ngIf="!isLoading">
-    <div *ngIf="biscuits != []" class="row ml-1">
-        <div class="col-12 my-3">
+    <div *ngIf="biscuits != []" class="row ">
+        <div class="col-12 my-3 text-center">
             <h3 class=" mb-3" *ngIf="url == '/biscuits'">Tous les biscuits</h3>
             <h3 class=" mb-3" *ngIf="regExType.test(url)">Biscuits au {{type}}</h3>
             <h3 class=" mb-3" *ngIf="regExName.test(url)">Resultats de la recherche "{{search}}" ({{biscuits.length}}
-                résultats trouvés)</h3><button *ngIf="validCategorie"
+                résultats trouvés)</h3><button *ngIf="valideCategorie"
                 [routerLink]="(regExType.test(url)) ? ['/biscuit-form',type] : ['/biscuit-form','']"
-                class="btn btn-success mr-4 mb-3">Ajouter
+                class="btn btn-success mb-3">Ajouter
                 un
-                biscuit</button><button *ngIf="!mobile" (click)="changeDisplay()" class="mb-3 btn btn-primary">Changer
+                biscuit</button><button *ngIf="!mobile" (click)="changeDisplay()"
+                class="mb-3 btn btn-primary ml-3">Changer
                 Affichage</button>
         </div>
         <div class="row container-fluid" *ngIf="beautyDisplay">
