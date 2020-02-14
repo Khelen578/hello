@@ -15,14 +15,14 @@
                 Affichage</button>
         </div>
         <div class="row container-fluid" *ngIf="beautyDisplay">
-            <div *ngFor="let biscuit of biscuits" class="col-sm-4 col-lg-3 p-2 ml-md-4 mr-5 ">
+            <div *ngFor="let biscuit of biscuits" class="col-sm-4 col-lg-3 p-2 ml-md-3 mr-5 ">
                 <app-biscuit [biscuit]="biscuit" (deleteEmitter)="deleteBiscuit($event)">
                 </app-biscuit>
             </div>
         </div>
 
         <table *ngIf="biscuits.length != 0 && !beautyDisplay"
-            class="table table-hover table-responsive  mx-auto p-5 table-bordered ">
+            class="table table-hover table-responsive table-bordered mx-auto">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Nom Biscuit</th>
@@ -35,14 +35,14 @@
             </thead>
             <tbody>
                 <tr *ngFor="let biscuit of biscuits">
-                    <td>{{biscuit.nom}}</td>
+                    <th scope="row">{{biscuit.nom}}</th>
                     <td>{{biscuit.categorie}}</td>
                     <td><img [src]="biscuit.image" alt="image de biscuit"></td>
-                    <td><button class="btn  btn-sm" [routerLink]="['/biscuit',biscuit.id]">Voir</button>
+                    <td><button class="btn" [routerLink]="['/biscuit',biscuit.id]">Voir</button>
                     </td>
-                    <td><button class="btn  btn-sm" [routerLink]="['/biscuit-form-edit',biscuit.id]">Editer</button>
+                    <td><button class="btn" [routerLink]="['/biscuit-form-edit',biscuit.id]">Editer</button>
                     </td>
-                    <td><button class="btn  btn-sm" (click)="deleteBiscuit(biscuit)">Supprimer</button>
+                    <td><button class="btn" (click)="deleteBiscuit(biscuit)">Supprimer</button>
                     </td>
                 </tr>
             </tbody>
