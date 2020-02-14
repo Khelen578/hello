@@ -35,6 +35,12 @@
       "id": 7,
       "nom": "Brownie",
       "image": "assets/img/brownie.jpeg"
+    },
+    {
+      "categorie": "beurre",
+      "id": 8,
+      "nom": "dsqf",
+      "image": "dfqs"
     }
   ]
 }

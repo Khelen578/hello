@@ -6,8 +6,8 @@
     </div>
 </ng-container>
 <ng-container *ngIf="!isLoading">
-    <div *ngIf="biscuits != []" class="row container-fluid">
-        <div class="col-12 my-3 text-center">
+    <div *ngIf="biscuits != []" class="row d-flex container-fluid">
+        <div class=" col-12 my-3 text-center">
             <h3 class=" mb-3" *ngIf="url == '/biscuits'">Tous les biscuits</h3>
             <h3 class=" mb-3" *ngIf="regExType.test(url)">Biscuits au {{type}}</h3>
             <h3 class=" mb-3" *ngIf="regExName.test(url)">Resultats de la recherche "{{search}}" ({{biscuits.length}}
@@ -19,8 +19,8 @@
                 class="mb-3 btn btn-primary ml-3">Changer
                 Affichage</button>
         </div>
-        <div class="row container-fluid" *ngIf="beautyDisplay">
-            <div *ngFor="let biscuit of biscuits" class="ml-3 ml-sm-5 col-12 col-sm-4 col-lg-3 p-2 ml-md-3 mr-5 ">
+        <div class="row container-fluid d-flex ml-2" *ngIf="beautyDisplay">
+            <div *ngFor="let biscuit of biscuits" class="col-md-6 col-lg-4 col-xl-3 ">
                 <app-biscuit [biscuit]="biscuit" (deleteEmitter)="deleteBiscuit($event)">
                 </app-biscuit>
             </div>
