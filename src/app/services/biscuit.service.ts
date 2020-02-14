@@ -25,6 +25,54 @@ export class BiscuitService {
   constructor(private toastr: ToastrService, private http: HttpClient) {
     this.biscuits = [];
   }
+
+  addBiscuit(newBiscuit: Biscuit): Observable<Biscuit> {
+    return this.http.post<Biscuit>(this.apiUrl, newBiscuit, this.httpOptions).pipe(
+      catchError(this.handlError)
+    );
+  }
+
+  getBiscuits(): Observable<Biscuit[]> {
+    return this.http.get<Biscuit[]>(this.apiUrl)
+      .pipe(
+        retry(1),
+        catchError(this.handlError)
+      );
+  }
+
+  getBiscuitById(id: number): Observable<Biscuit> {
+    return this.http.get<Biscuit>(this.apiUrl + '/' + id).pipe(
+      retry(1),
+      catchError(this.handlError)
+    );
+  }
+
+  editBiscuit(monBiscuit: Biscuit) {
+    return this.http.put<Biscuit>(this.apiUrl + '/' + monBiscuit.id, monBiscuit, this.httpOptions).pipe(
+      catchError(this.handlError)
+    );
+
+  }
+
+  deleteBiscuit(id: number): Observable<Biscuit> {
+    return this.http.delete<Biscuit>(this.apiUrl + '/' + id).pipe(
+      retry(1),
+      catchError(this.handlError)
+    );
+  }
+
+  getDisplay() {
+    return this.beautyDisplay;
+  }
+
+  changeDisplay() {
+    this.beautyDisplay = !this.beautyDisplay;
+  }
+
+  getBiscuitCategories(): string[] {
+    return this.categories;
+  }
+
   // gestion des erreurs
   handlError(error) {
     let errorMessage = '';
@@ -39,19 +87,6 @@ export class BiscuitService {
     return throwError(errorMessage);
   }
 
-  getDisplay() {
-    return this.beautyDisplay;
-  }
-
-  changeDisplay() {
-    this.beautyDisplay = !this.beautyDisplay;
-  }
-
-  addBiscuit(newBiscuit: Biscuit): Observable<Biscuit> {
-    return this.http.post<Biscuit>(this.apiUrl, newBiscuit, this.httpOptions).pipe(
-      catchError(this.handlError)
-    );
-  }
   showToast(message: string, title: string, type: number) {
     switch (type) {
       case 1:
@@ -71,53 +106,5 @@ export class BiscuitService {
         break;
     }
 
-  }
-
-  deleteBiscuit(id: number): Observable<Biscuit> {
-    return this.http.delete<Biscuit>(this.apiUrl + '/' + id).pipe(
-      retry(1),
-      catchError(this.handlError)
-    );
-  }
-
-  getBiscuitByIdTheOldWay(id: number): Biscuit {
-    return this.biscuits.filter(biscuit => biscuit.id === id)[0];
-  }
-
-  getBiscuits(): Observable<Biscuit[]> {
-    return this.http.get<Biscuit[]>(this.apiUrl)
-      .pipe(
-        retry(1),
-        catchError(this.handlError)
-      );
-  }
-
-  getBiscuitById(id: number): Observable<Biscuit> {
-    return this.http.get<Biscuit>(this.apiUrl + '/' + id)
-      .pipe(
-        retry(1),
-        catchError(this.handlError)
-      );
-  }
-
-  getBiscuitsByName(name: string) {
-    if (name != null) {
-      return this.biscuits.filter(biscuit => biscuit.nom.toUpperCase() === name.toUpperCase());
-    }
-  }
-
-  getBiscuitsByCategorie(categorie: string): Biscuit[] {
-    return this.biscuits.filter(biscuit => biscuit.categorie === categorie);
-  }
-
-  editBiscuit(monBiscuit: Biscuit) {
-    return this.http.put<Biscuit>(this.apiUrl + '/' + monBiscuit.id, monBiscuit, this.httpOptions).pipe(
-      catchError(this.handlError)
-    );
-
-  }
-
-  getBiscuitCategories(): string[] {
-    return this.categories;
   }
 }

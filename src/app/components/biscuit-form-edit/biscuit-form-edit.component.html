@@ -1,30 +1,36 @@
-<div class="container my-5 border p-5">
-    <form #biscuitValidation="ngForm" (ngSubmit)="onSubmit()">
-        <h3 class="mb-5">Formulaire d'edition de biscuits</h3>
-        <div class="form-group">
-            <label for=" name">Nom du biscuit</label>
-            <input type="text" required name="name" id="name" class="form-control" [(ngModel)]="formBiscuit.nom"
-                placeholder="nom" #name="ngModel">
-            <div *ngIf="!name.valid" class="alert alert-danger">Veuillez saisir le nom</div>
+<ng-container *ngIf="isLoading">
+    En Chargement...
+</ng-container>
+<ng-container *ngIf="!isLoading">
+    <div class="container my-5 border p-5">
+        <form #biscuitValidation="ngForm" (ngSubmit)="onSubmit()">
+            <h3 class="mb-5">Formulaire d'edition de biscuits</h3>
+            <div class="form-group">
+                <label for=" name">Nom du biscuit</label>
+                <input type="text" required name="name" id="name" class="form-control" [(ngModel)]="formBiscuit.nom"
+                    placeholder="nom" #name="ngModel">
+                <div *ngIf="!name.valid" class="alert alert-danger">Veuillez saisir le nom</div>
 
-        </div>
-        <div class="form-group"> <label for="categorie">Categorie</label>
-            <select class="form-control" id="categorie" required [(ngModel)]="formBiscuit.categorie" name="categorie"
-                #categorie="ngModel">
-                <option [value]="" [selected]="!categorie.valid">Choisissez une categorie</option>
-                <option *ngFor="let categorie of categories" [value]="categorie">{{categorie}}</option>
-            </select>
-            <div [hidden]="categorie.valid" class="alert alert-danger"> veuillez saisir la categorie du biscuit </div>
-        </div>
-        <div class="form-group">
-            <label for=" img">Image du biscuit</label>
-            <input type="text" required name="img" id="img" class="form-control" [(ngModel)]="formBiscuit.image"
-                placeholder="url de l'image" #img="ngModel">
-            <div *ngIf="!img.valid" class="alert alert-danger">Veuillez saisir l'url de l'image</div>
-        </div>
-        <div class="form-group">
-            <input type="submit" class="btn btn-block btn-success" value="Valider et retourner à la liste"
-                [disabled]="!biscuitValidation.valid">
-        </div>
-    </form>
-</div>
+            </div>
+            <div class="form-group"> <label for="categorie">Categorie</label>
+                <select class="form-control" id="categorie" required [(ngModel)]="formBiscuit.categorie"
+                    name="categorie" #categorie="ngModel">
+                    <option [value]="" [selected]="!categorie.valid">Choisissez une categorie</option>
+                    <option *ngFor="let categorie of categories" [value]="categorie">{{categorie}}</option>
+                </select>
+                <div [hidden]="categorie.valid" class="alert alert-danger"> veuillez saisir la categorie du biscuit
+                </div>
+            </div>
+            <div class="form-group">
+                <label for=" img">Image du biscuit</label>
+                <input type="text" required name="img" id="img" class="form-control" [(ngModel)]="formBiscuit.image"
+                    placeholder="url de l'image" #img="ngModel">
+                <div *ngIf="!img.valid" class="alert alert-danger">Veuillez saisir l'url de l'image</div>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-block btn-success" value="Valider et retourner à la liste"
+                    [disabled]="!biscuitValidation.valid">
+            </div>
+        </form>
+    </div>
+</ng-container>

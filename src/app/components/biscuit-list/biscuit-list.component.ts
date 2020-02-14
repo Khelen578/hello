@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Biscuit } from 'src/app/models/biscuit';
 import { BiscuitService } from 'src/app/services/biscuit.service';
-import { ActivatedRoute, Router, Event, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
+import { ActivatedRoute, Router, Event, NavigationEnd, NavigationError } from '@angular/router';
 
 @Component({
   selector: 'app-biscuit-list',
@@ -15,7 +15,7 @@ export class BiscuitListComponent implements OnInit {
   url: string;
   typeBiscuit = '';
   beautyDisplay: boolean;
-  search: string;
+  search = '';
   type: string;
   regExType = /^\/biscuits\/type\/.*/;
   regExName = /^\/biscuits\/search\/.*/;
@@ -23,10 +23,6 @@ export class BiscuitListComponent implements OnInit {
 
   constructor(private biscuitService: BiscuitService, private activatedRoute: ActivatedRoute, private routeur: Router) {
     routeur.events.subscribe((event: Event) => {
-
-      if (event instanceof NavigationStart) {
-      }
-
       if (event instanceof NavigationEnd) {
         this.refreshBiscuits();
       }
@@ -52,17 +48,15 @@ export class BiscuitListComponent implements OnInit {
   refreshBiscuits() {
     this.url = this.routeur.url;
     this.beautyDisplay = this.biscuitService.getDisplay();
-    if (this.regExType.test(this.routeur.url)) {
+    if (this.regExType.test(this.url)) {
       this.type = this.activatedRoute.snapshot.paramMap.get('type');
       return this.biscuitService.getBiscuits().subscribe((data: Biscuit[]) => {
         this.biscuits = data.filter(biscuit => biscuit.categorie === this.type);
         this.isLoading = false;
       });
-    } else if (this.regExName.test(this.routeur.url)) {
+    } else if (this.regExName.test(this.url)) {
       this.search = this.activatedRoute.snapshot.paramMap.get('querry');
       this.searchRegex = new RegExp(this.search.toUpperCase());
-      console.log('recherche', this.search.toUpperCase());
-      console.log(this.searchRegex.test('MADELEINE'));
       return this.biscuitService.getBiscuits().subscribe((data: Biscuit[]) => {
         this.biscuits = data.filter(biscuit => this.searchRegex.test(biscuit.nom.toUpperCase()));
         this.isLoading = false;

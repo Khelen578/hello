@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Biscuit } from 'src/app/models/biscuit';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { BiscuitService } from 'src/app/services/biscuit.service';
 import { Location } from '@angular/common';
 
@@ -14,14 +14,16 @@ export class BiscuitDetailComponent implements OnInit {
   biscuit: Biscuit;
   isLoading: boolean;
 
-  constructor(private routeur: Router, private activatedRoute: ActivatedRoute, private biscuitService: BiscuitService, private location: Location) { }
+  constructor(private activatedRoute: ActivatedRoute, private biscuitService: BiscuitService, private location: Location) { }
 
   ngOnInit() {
+    console.log(+this.activatedRoute.snapshot.paramMap.get('id'));
     this.isLoading = true;
     this.biscuitService.getBiscuitById(+this.activatedRoute.snapshot.paramMap.get('id')).subscribe((data: Biscuit) => {
       this.biscuit = data;
       this.isLoading = false;
     });
+    console.log(this.biscuit);
 
   }
   goBack() {

@@ -6,7 +6,8 @@
         <div class="col-12 my-3">
             <h3 class=" mb-3" *ngIf="url == '/biscuits'">Tous les biscuits</h3>
             <h3 class=" mb-3" *ngIf="regExType.test(url)">Biscuits au {{type}}</h3>
-            <h3 class=" mb-3" *ngIf="regExName.test(url)">Resultats de la recherche "{{search}}"</h3><button
+            <h3 class=" mb-3" *ngIf="regExName.test(url)">Resultats de la recherche "{{search}}" ({{biscuits.length}}
+                résultats trouvés)</h3><button
                 [routerLink]="(regExType.test(url)) ? ['/biscuit-form',type] : ['/biscuit-form','']"
                 class="btn btn-success mr-4 mb-3">Ajouter
                 un
