@@ -9,6 +9,7 @@ import { ActivatedRoute, Router, Event, NavigationEnd, NavigationError } from '@
   styleUrls: ['./biscuit-list.component.css']
 })
 export class BiscuitListComponent implements OnInit {
+  categories: string[];
   biscuits: Biscuit[];
   mobile: boolean;
   isLoading: boolean;
@@ -20,6 +21,7 @@ export class BiscuitListComponent implements OnInit {
   regExType = /^\/biscuits\/type\/.*/;
   regExName = /^\/biscuits\/search\/.*/;
   searchRegex: RegExp;
+  validCategorie: boolean;
 
   constructor(private biscuitService: BiscuitService, private activatedRoute: ActivatedRoute, private routeur: Router) {
     routeur.events.subscribe((event: Event) => {
@@ -46,10 +48,12 @@ export class BiscuitListComponent implements OnInit {
   }
 
   refreshBiscuits() {
+    this.categories = this.biscuitService.categories;
     this.url = this.routeur.url;
     this.beautyDisplay = this.biscuitService.getDisplay();
     if (this.regExType.test(this.url)) {
       this.type = this.activatedRoute.snapshot.paramMap.get('type');
+      this.validCategorie = (this.categories.indexOf(this.type) !== -1);
       return this.biscuitService.getBiscuits().subscribe((data: Biscuit[]) => {
         this.biscuits = data.filter(biscuit => biscuit.categorie === this.type);
         this.isLoading = false;
