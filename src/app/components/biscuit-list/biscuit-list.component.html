@@ -28,17 +28,15 @@
                     <th scope="col">Nom Biscuit</th>
                     <th scope="col">Type</th>
                     <th scope="col">Image</th>
-                    <th scope="col">Voir</th>
                     <th scope="col">Editer</th>
                     <th scope="col">Supprimer</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let biscuit of biscuits">
-                    <th scope="row">{{biscuit.nom}}</th>
+                    <th scope="row" [routerLink]="['/biscuit',biscuit.id]">{{biscuit.nom}}</th>
                     <td>{{biscuit.categorie}}</td>
-                    <td><img [src]="biscuit.image" alt="image de biscuit"></td>
-                    <td><button class="btn" [routerLink]="['/biscuit',biscuit.id]">Voir</button>
+                    <td><img [src]="biscuit.image" alt="image de biscuit">
                     </td>
                     <td><button class="btn" [routerLink]="['/biscuit-form-edit',biscuit.id]">Editer</button>
                     </td>

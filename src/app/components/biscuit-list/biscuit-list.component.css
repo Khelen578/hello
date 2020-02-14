@@ -5,3 +5,6 @@ img{
     width: 50px;
     height: 35px;
 }
+th[scope="row"]:hover{
+    cursor: pointer;
+}
