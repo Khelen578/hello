@@ -20,7 +20,7 @@
                 Affichage</button>
         </div>
         <div class="row container-fluid" *ngIf="beautyDisplay">
-            <div *ngFor="let biscuit of biscuits" class="col-sm-4 col-lg-3 p-2 ml-md-3 mr-5 ">
+            <div *ngFor="let biscuit of biscuits" class="ml-3 ml-sm-5 col-12 col-sm-4 col-lg-3 p-2 ml-md-3 mr-5 ">
                 <app-biscuit [biscuit]="biscuit" (deleteEmitter)="deleteBiscuit($event)">
                 </app-biscuit>
             </div>
