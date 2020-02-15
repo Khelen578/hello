@@ -1,14 +1,14 @@
-<div class="container">
-    <ng-container *ngIf="isLoading">
-        <div style="margin-left: 50%;margin-top: 35% ;width: 3rem; height: 3rem;">
-            <div class="spinner-border" role="status">
-                <span class="sr-only">Chargement...</span>
-            </div>
+<ng-container *ngIf="isLoading">
+    <div style="margin-left: 50%;margin-top: 35% ;width: 3rem; height: 3rem;">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Chargement...</span>
         </div>
-    </ng-container>
-    <ng-container *ngIf="!isLoading">
-        <div *ngIf="biscuits != []" class="row d-flex ">
-            <div class=" col-12 my-2 text-center">
+    </div>
+</ng-container>
+<ng-container *ngIf="!isLoading">
+    <div class="container">
+        <div *ngIf="biscuits != []" class="row d-flex">
+            <div class=" col-12 my-4 text-center ">
                 <h3 class=" mb-4" *ngIf="url == '/biscuits'">Tous les biscuits</h3>
                 <h3 class=" mb-4" *ngIf="regExType.test(url)">Biscuits au {{type | titlecase}}</h3>
                 <h3 class=" mb-4" *ngIf="regExName.test(url)">Resultats de la recherche "{{search}}"
@@ -20,11 +20,14 @@
                     biscuit</button><button *ngIf="!mobile" (click)="changeDisplay()"
                     class="mb-3 btn btn-outline-primary ml-3">{{(beautyDisplay) ? 'Passer en Tableau' : 'Passer en Cartes'}}</button>
             </div>
-            <div class="row container-fluid card-deck " *ngIf="beautyDisplay">
-                <app-biscuit [biscuit]="biscuit" (deleteEmitter)="deleteBiscuit($event)"
-                    *ngFor="let biscuit of biscuits" class="col-md-6 col-lg-4 col-xl-3 ">
-                </app-biscuit>
+            <div class="col-12">
+                <div class="row text-center" *ngIf="beautyDisplay">
+                    <app-biscuit [biscuit]="biscuit" (deleteEmitter)="deleteBiscuit($event)"
+                        *ngFor="let biscuit of biscuits" class="col-md-6 col-lg-4 col-xl-3 text-center">
+                    </app-biscuit>
+                </div>
             </div>
+
 
             <table *ngIf="biscuits.length != 0 && !beautyDisplay"
                 class="table table-hover table-responsive table-bordered mx-auto">
@@ -55,5 +58,6 @@
         <div *ngIf="biscuits === null || biscuits.length === 0" class="my-3">
             <div class="alert alert-danger text-center">Aucun biscuit à afficher !</div>
         </div>
-    </ng-container>
-</div>
+    </div>
+
+</ng-container>

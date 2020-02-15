@@ -13,6 +13,3 @@ th[scope="row"]:hover{
     font-style: italic;
     cursor: pointer;
 }
-th,td{
-    padding: 10px;
-}

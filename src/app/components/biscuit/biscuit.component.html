@@ -1,4 +1,4 @@
-<div (mouseenter)="overStartEvent()" (mouseleave)="overEndEvent()" class="card p-auto mx-auto my-3  "
+<div (mouseenter)="overStartEvent()" (mouseleave)="overEndEvent()" class="card mx-auto p-auto mb-3  "
     style="width: 17rem;" [ngClass]="overed ? 'selected' : 'border'">
     <img class=" card-img-top img-fluid" [routerLink]="['/biscuit',biscuit.id]" [src]="biscuit.image"
         alt="image de biscuit">

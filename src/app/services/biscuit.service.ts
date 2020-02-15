@@ -12,7 +12,7 @@ export class BiscuitService {
 
   public biscuits: Biscuit[];
   public categories = ['beurre', 'chocolat', 'fourrage anko', 'caramel', 'praliné'];
-  beautyDisplay = true;
+  beautyDisplay = false;
   // l'url de mon api
   apiUrl = 'http://93.29.84.137:3000/biscuits';
   httpOptions = {
