@@ -8,18 +8,17 @@
     </ng-container>
     <ng-container *ngIf="!isLoading">
         <div *ngIf="biscuits != []" class="row d-flex ">
-            <div class=" col-12 my-3 text-center">
-                <h3 class=" mb-3" *ngIf="url == '/biscuits'">Tous les biscuits</h3>
-                <h3 class=" mb-3" *ngIf="regExType.test(url)">Biscuits au {{type | titlecase}}</h3>
-                <h3 class=" mb-3" *ngIf="regExName.test(url)">Resultats de la recherche "{{search}}"
+            <div class=" col-12 my-2 text-center">
+                <h3 class=" mb-4" *ngIf="url == '/biscuits'">Tous les biscuits</h3>
+                <h3 class=" mb-4" *ngIf="regExType.test(url)">Biscuits au {{type | titlecase}}</h3>
+                <h3 class=" mb-4" *ngIf="regExName.test(url)">Resultats de la recherche "{{search}}"
                     ({{biscuits.length}}
                     résultats trouvés)</h3><button *ngIf="valideCategorie"
                     [routerLink]="(regExType.test(url)) ? ['/biscuit-form',type] : ['/biscuit-form','']"
                     class="btn btn-success mb-3">Ajouter
                     un
                     biscuit</button><button *ngIf="!mobile" (click)="changeDisplay()"
-                    class="mb-3 btn btn-outline-primary ml-3">Changer
-                    Affichage</button>
+                    class="mb-3 btn btn-outline-primary ml-3">{{(beautyDisplay) ? 'Passer en Tableau' : 'Passer en Cartes'}}</button>
             </div>
             <div class="row container-fluid card-deck " *ngIf="beautyDisplay">
                 <app-biscuit [biscuit]="biscuit" (deleteEmitter)="deleteBiscuit($event)"
