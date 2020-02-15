@@ -4,7 +4,7 @@
         alt="image de biscuit">
     <div class="card-body">
         <h5 class="card-title text-center">{{biscuit.nom | titlecase}}</h5>
-        <p class="card-text">Délicieux biscuits au {{biscuit.categorie}}</p>
+        <p class="card-text">Délicieux biscuits au {{biscuit.categorie}}.</p>
         <!-- <a [routerLink]="['/biscuit',biscuit.id]" class="btn btn-block btn-primary">Voir {{biscuit.nom}}</a> -->
         <a [routerLink]="['/biscuit-form-edit',biscuit.id]" class="btn btn-block btn-text-center btn-primary">Editer
             {{biscuit.nom | titlecase}}</a>
