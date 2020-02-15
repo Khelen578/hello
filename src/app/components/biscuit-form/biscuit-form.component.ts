@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Biscuit } from 'src/app/models/biscuit';
-import { Location } from '@angular/common';
 import { BiscuitService } from 'src/app/services/biscuit.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 
 
 @Component({

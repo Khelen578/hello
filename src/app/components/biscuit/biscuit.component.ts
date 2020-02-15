@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Biscuit } from 'src/app/models/biscuit';
-import { BiscuitService } from 'src/app/services/biscuit.service';
 
 
 @Component({
@@ -13,7 +12,7 @@ export class BiscuitComponent implements OnInit {
 
   @Input() biscuit: Biscuit;
   @Output() deleteEmitter: EventEmitter<Biscuit> = new EventEmitter<Biscuit>();
-  constructor(private biscuitService: BiscuitService) { }
+  constructor() { }
 
   ngOnInit() {
 

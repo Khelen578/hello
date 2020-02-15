@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Biscuit } from 'src/app/models/biscuit';
 import { BiscuitService } from 'src/app/services/biscuit.service';
-import { ActivatedRoute, Router, Event, NavigationEnd, NavigationError, NavigationStart } from '@angular/router';
+import { ActivatedRoute, Router, Event, NavigationEnd, NavigationError } from '@angular/router';
 
 @Component({
   selector: 'app-biscuit-list',
@@ -14,7 +14,6 @@ export class BiscuitListComponent implements OnInit {
   mobile: boolean;
   isLoading: boolean;
   url: string;
-  typeBiscuit = '';
   beautyDisplay: boolean;
   search = '';
   type: string;
@@ -25,9 +24,6 @@ export class BiscuitListComponent implements OnInit {
 
   constructor(private biscuitService: BiscuitService, private activatedRoute: ActivatedRoute, private routeur: Router) {
     routeur.events.subscribe((event: Event) => {
-      if (event instanceof NavigationStart) {
-
-      }
       if (event instanceof NavigationEnd) {
         this.refreshBiscuits();
       }
@@ -40,9 +36,6 @@ export class BiscuitListComponent implements OnInit {
   ngOnInit() {
     this.url = this.routeur.url;
     this.beautyDisplay = this.biscuitService.getDisplay();
-    if (window.screen.width < 500) {
-      this.mobile = true;
-    }
     // j'initialise le chargement a true car on va demander une ressource à notre serveur après
     this.isLoading = true;
     // je demande à mon service d'aller chercher toutes les ressources biscuits
@@ -50,13 +43,16 @@ export class BiscuitListComponent implements OnInit {
   }
 
   refreshBiscuits() {
+    if (window.screen.width < 500) {
+      this.mobile = true;
+    }
     this.valideCategorie = true;
     this.categories = this.biscuitService.categories;
     this.url = this.routeur.url;
     this.beautyDisplay = this.biscuitService.getDisplay();
     if (this.regExType.test(this.url)) {
       this.type = this.activatedRoute.snapshot.paramMap.get('type');
-      if (this.categories.indexOf(this.type) == -1) {
+      if (this.categories.indexOf(this.type) === -1) {
         this.valideCategorie = false;
       }
       return this.biscuitService.getBiscuits().subscribe((data: Biscuit[]) => {
@@ -79,8 +75,7 @@ export class BiscuitListComponent implements OnInit {
   }
 
   changeDisplay() {
-    this.beautyDisplay = !this.beautyDisplay;
-    this.biscuitService.changeDisplay();
+    this.beautyDisplay = this.biscuitService.changeDisplay();
   }
 
   deleteBiscuit($event) {

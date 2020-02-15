@@ -11,7 +11,7 @@ import { catchError, retry } from 'rxjs/internal/operators';
 export class BiscuitService {
 
   public biscuits: Biscuit[];
-  public categories = ['beurre', 'chocolat', 'fourrage anko', 'caramel'];
+  public categories = ['beurre', 'chocolat', 'fourrage anko', 'caramel', 'praliné'];
   beautyDisplay = true;
   // l'url de mon api
   apiUrl = 'http://localhost:3000/biscuits';
@@ -65,8 +65,9 @@ export class BiscuitService {
     return this.beautyDisplay;
   }
 
-  changeDisplay() {
+  changeDisplay(): boolean {
     this.beautyDisplay = !this.beautyDisplay;
+    return this.beautyDisplay;
   }
 
   getBiscuitCategories(): string[] {

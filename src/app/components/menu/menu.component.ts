@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BiscuitService } from 'src/app/services/biscuit.service';
 import { Router } from '@angular/router';
 
@@ -11,8 +11,6 @@ export class MenuComponent implements OnInit {
   search = '';
   isCollapsed = true;
   categories: string[];
-  mobile: boolean;
-
 
   constructor(private routeur: Router, private biscuitService: BiscuitService) {
 
