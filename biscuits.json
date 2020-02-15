@@ -35,6 +35,24 @@
       "id": 7,
       "nom": "Brownie",
       "image": "assets/img/brownie.jpeg"
+    },
+    {
+      "categorie": "praliné",
+      "id": 8,
+      "nom": "Biscuit",
+      "image": "assets/img/sablé-breton.jpg"
+    },
+    {
+      "categorie": "chocolat",
+      "id": 9,
+      "nom": "Prince",
+      "image": "assets/img/cookie.jpg"
+    },
+    {
+      "categorie": "beurre",
+      "id": 10,
+      "nom": "Biscotte",
+      "image": "assets/img/sablé-breton.jpg"
     }
   ]
 }
