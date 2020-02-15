@@ -1,31 +1,31 @@
 {
   "biscuits": [
     {
-      "nom": "Cookie",
+      "nom": "cookie",
       "categorie": "chocolat",
       "image": "assets/img/cookie.jpg",
       "id": 1
     },
     {
-      "nom": "Sablé Breton",
+      "nom": "sablé breton",
       "categorie": "beurre",
       "image": "assets/img/sablé-breton.jpg",
       "id": 2
     },
     {
-      "nom": "Madeleine",
+      "nom": "madeleine",
       "categorie": "beurre",
       "image": "assets/img/madeleine.jpg",
       "id": 3
     },
     {
-      "nom": "Dorayaki",
+      "nom": "dorayaki",
       "categorie": "fourrage anko",
       "image": "assets/img/dorayaki.jpg",
       "id": 5
     },
     {
-      "nom": "Taiyaki",
+      "nom": "taiyaki",
       "categorie": "fourrage anko",
       "image": "assets/img/taiyaki.jpeg",
       "id": 6
@@ -33,26 +33,38 @@
     {
       "categorie": "chocolat",
       "id": 7,
-      "nom": "Brownie",
+      "nom": "brownie",
       "image": "assets/img/brownie.jpeg"
     },
     {
-      "categorie": "praliné",
+      "categorie": "beurre",
       "id": 8,
-      "nom": "Biscuit",
+      "nom": "biscotte",
       "image": "assets/img/sablé-breton.jpg"
-    },
-    {
-      "categorie": "chocolat",
-      "id": 9,
-      "nom": "Prince",
-      "image": "assets/img/cookie.jpg"
     },
     {
       "categorie": "beurre",
-      "id": 10,
-      "nom": "Biscotte",
-      "image": "assets/img/sablé-breton.jpg"
+      "id": 9,
+      "nom": "biscuit",
+      "image": "assets/img/madeleine.jpg"
+    },
+    {
+      "categorie": "beurre",
+      "id": 11,
+      "nom": "fdqs qsfd fd",
+      "image": "assets/img/cookie.jpg"
+    },
+    {
+      "categorie": "fourrage anko",
+      "id": 12,
+      "nom": "kibidango",
+      "image": "assets/img/dorayaki.jpg"
+    },
+    {
+      "categorie": "chocolat",
+      "id": 13,
+      "nom": "prince",
+      "image": "assets/img/cookie.jpg"
     }
   ]
 }
