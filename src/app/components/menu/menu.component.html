@@ -10,7 +10,7 @@
             <li class="nav-item" *ngFor="let categorie of categories">
                 <a class="nav-link " [routerLink]="['biscuits/type',categorie]" (click)="onClick()"
                     routerLinkActive=" active">Au
-                    {{categorie}}</a>
+                    {{categorie | titlecase}}</a>
             </li>
         </ul>
         <div class="mx-auto mx-md-0">

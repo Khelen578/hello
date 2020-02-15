@@ -10,7 +10,7 @@
         <div *ngIf="biscuits != []" class="row d-flex ">
             <div class=" col-12 my-3 text-center">
                 <h3 class=" mb-3" *ngIf="url == '/biscuits'">Tous les biscuits</h3>
-                <h3 class=" mb-3" *ngIf="regExType.test(url)">Biscuits au {{type}}</h3>
+                <h3 class=" mb-3" *ngIf="regExType.test(url)">Biscuits au {{type | titlecase}}</h3>
                 <h3 class=" mb-3" *ngIf="regExName.test(url)">Resultats de la recherche "{{search}}"
                     ({{biscuits.length}}
                     résultats trouvés)</h3><button *ngIf="valideCategorie"
@@ -18,14 +18,13 @@
                     class="btn btn-success mb-3">Ajouter
                     un
                     biscuit</button><button *ngIf="!mobile" (click)="changeDisplay()"
-                    class="mb-3 btn btn-primary ml-3">Changer
+                    class="mb-3 btn btn-outline-primary ml-3">Changer
                     Affichage</button>
             </div>
-            <div class="row container-fluid d-flex" *ngIf="beautyDisplay">
-                <div *ngFor="let biscuit of biscuits" class="col-md-6 col-lg-4 col-xl-3 ">
-                    <app-biscuit [biscuit]="biscuit" (deleteEmitter)="deleteBiscuit($event)">
-                    </app-biscuit>
-                </div>
+            <div class="row container-fluid card-deck " *ngIf="beautyDisplay">
+                <app-biscuit [biscuit]="biscuit" (deleteEmitter)="deleteBiscuit($event)"
+                    *ngFor="let biscuit of biscuits" class="col-md-6 col-lg-4 col-xl-3 ">
+                </app-biscuit>
             </div>
 
             <table *ngIf="biscuits.length != 0 && !beautyDisplay"
@@ -41,7 +40,8 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let biscuit of biscuits">
-                        <th class="first-col" scope="row" [routerLink]="['/biscuit',biscuit.id]">{{biscuit.nom}}</th>
+                        <th class="first-col" scope="row" [routerLink]="['/biscuit',biscuit.id]">
+                            {{biscuit.nom | titlecase}}</th>
                         <td>{{biscuit.categorie}}</td>
                         <td><img [src]="biscuit.image" alt="image de biscuit">
                         </td>

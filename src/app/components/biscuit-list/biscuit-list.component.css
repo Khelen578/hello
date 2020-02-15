@@ -9,9 +9,10 @@ th[scope="row"]{
     font-weight: normal;
 }
 th[scope="row"]:hover{
-    font-weight: 620;
+    font-weight: 520;
+    font-style: italic;
     cursor: pointer;
 }
 th,td{
-    padding: 15px;
+    padding: 10px;
 }
