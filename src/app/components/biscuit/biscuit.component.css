@@ -6,7 +6,7 @@ img:hover{
     cursor: pointer;
 }
 
-.selected{
+.card:hover{
     border: 1px solid green;
     border-radius: 0.3;
 }

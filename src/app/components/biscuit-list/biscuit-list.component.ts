@@ -21,6 +21,7 @@ export class BiscuitListComponent implements OnInit {
   regExName = /^\/biscuits\/search\/.*/;
   searchRegex: RegExp;
   valideCategorie: boolean;
+  overed: boolean;
 
   constructor(private biscuitService: BiscuitService, private activatedRoute: ActivatedRoute, private routeur: Router) {
     routeur.events.subscribe((event: Event) => {

@@ -8,7 +8,6 @@ import { Biscuit } from 'src/app/models/biscuit';
   styleUrls: ['./biscuit.component.css']
 })
 export class BiscuitComponent implements OnInit {
-  overed = false;
 
   @Input() biscuit: Biscuit;
   @Output() deleteEmitter: EventEmitter<Biscuit> = new EventEmitter<Biscuit>();
@@ -16,12 +15,6 @@ export class BiscuitComponent implements OnInit {
 
   ngOnInit() {
 
-  }
-  overStartEvent() {
-    this.overed = true;
-  }
-  overEndEvent() {
-    this.overed = false;
   }
 
   onDeleteBiscuit(biscuit: Biscuit) {

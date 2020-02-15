@@ -30,7 +30,7 @@
 
 
             <table *ngIf="biscuits.length != 0 && !beautyDisplay"
-                class="table table-hover table-responsive table-bordered mx-auto">
+                class="table table-responsive table-bordered table-hover mx-auto text-center">
                 <thead class="thead-dark">
                     <tr>
                         <th class="first-col" scope="col">Nom Biscuit</th>
@@ -45,7 +45,7 @@
                         <th class="first-col" scope="row" [routerLink]="['/biscuit',biscuit.id]">
                             {{biscuit.nom | titlecase}}</th>
                         <td>{{biscuit.categorie | titlecase}}</td>
-                        <td><img [src]="biscuit.image" alt="image de biscuit">
+                        <td><img [src]="biscuit.image" alt="biscuit">
                         </td>
                         <td><button class="btn" [routerLink]="['/biscuit-form-edit',biscuit.id]">Editer</button>
                         </td>
