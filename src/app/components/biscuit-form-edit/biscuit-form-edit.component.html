@@ -11,8 +11,8 @@
             <h3 class="mb-5 text-center">Formulaire d'edition de biscuits</h3>
             <div class="form-group">
                 <label for=" name">Nom du biscuit</label>
-                <input type="text" required name="name" id="name" class="form-control" [(ngModel)]="formBiscuit.nom"
-                    placeholder="nom" #name="ngModel">
+                <input appAutofocus type="text" required name="name" id="name" class="form-control"
+                    [(ngModel)]="formBiscuit.nom" placeholder="nom" #name="ngModel">
                 <div *ngIf="!name.valid" class="alert alert-danger">Veuillez saisir le nom</div>
 
             </div>

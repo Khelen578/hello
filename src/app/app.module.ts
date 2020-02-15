@@ -18,6 +18,7 @@ import { CommonModule } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
 import { CollapseModule } from 'ngx-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { AutofocusDirective } from './directives/autofocus.directive';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     BiscuitFormComponent,
     BiscuitFormEditComponent,
     ReplacePipe,
+    AutofocusDirective,
   ],
   imports: [
     FormsModule,

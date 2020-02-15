@@ -5,6 +5,13 @@ img{
     width: 50px;
     height: 35px;
 }
+th[scope="row"]{
+    font-weight: normal;
+}
 th[scope="row"]:hover{
+    font-weight: 620;
     cursor: pointer;
+}
+th,td{
+    padding: 15px;
 }
