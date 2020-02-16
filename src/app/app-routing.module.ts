@@ -9,12 +9,13 @@ import { BiscuitFormEditComponent } from './components/biscuit-form-edit/biscuit
 const routes: Routes = [
   { path: '', redirectTo: 'biscuits', pathMatch: 'full' },
   { path: 'biscuits', component: BiscuitListComponent },
+  { path: 'biscuits/type/:type/:querry', component: BiscuitListComponent },
+  { path: 'biscuits/type/:type', component: BiscuitListComponent },
   { path: 'biscuits/search/:querry', component: BiscuitListComponent },
   { path: 'biscuit-form', component: BiscuitFormComponent },
   { path: 'biscuit-form/:type', component: BiscuitFormComponent },
   { path: 'biscuit-form-edit/:id', component: BiscuitFormEditComponent },
   { path: 'biscuit/:id', component: BiscuitDetailComponent },
-  { path: 'biscuits/type/:type', component: BiscuitListComponent },
   { path: '**', redirectTo: 'biscuits', pathMatch: 'full' }
 ];
 

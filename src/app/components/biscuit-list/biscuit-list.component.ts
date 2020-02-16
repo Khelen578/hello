@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Biscuit } from 'src/app/models/biscuit';
 import { BiscuitService } from 'src/app/services/biscuit.service';
 import { ActivatedRoute, Router, Event, NavigationEnd, NavigationError } from '@angular/router';
+
 
 @Component({
   selector: 'app-biscuit-list',
@@ -19,9 +20,9 @@ export class BiscuitListComponent implements OnInit {
   type: string;
   regExType = /^\/biscuits\/type\/.*/;
   regExName = /^\/biscuits\/search\/.*/;
+  regExTypeSearch = /^\/biscuits\/.*\/.*\/.*/;
   searchRegex: RegExp;
   valideCategorie: boolean;
-  overed: boolean;
 
   constructor(private biscuitService: BiscuitService, private activatedRoute: ActivatedRoute, private routeur: Router) {
     routeur.events.subscribe((event: Event) => {
@@ -52,10 +53,23 @@ export class BiscuitListComponent implements OnInit {
     this.url = this.routeur.url;
     this.beautyDisplay = this.biscuitService.getDisplay();
     if (this.regExType.test(this.url)) {
+
       this.type = this.activatedRoute.snapshot.paramMap.get('type');
+      this.biscuitService.setCurrentType(this.type);
+
       if (this.categories.indexOf(this.type) === -1) {
         this.valideCategorie = false;
       }
+
+      if (this.regExTypeSearch.test(this.url)) {
+        this.search = this.activatedRoute.snapshot.paramMap.get('querry');
+        this.searchRegex = new RegExp(this.search.toUpperCase());
+        return this.biscuitService.getBiscuits().subscribe((data: Biscuit[]) => {
+          this.biscuits = data.filter(biscuit => biscuit.categorie === this.type && this.searchRegex.test(biscuit.nom.toUpperCase()));
+          this.isLoading = false;
+        });
+      }
+
       return this.biscuitService.getBiscuits().subscribe((data: Biscuit[]) => {
         this.biscuits = data.filter(biscuit => biscuit.categorie === this.type);
         this.isLoading = false;
@@ -69,6 +83,7 @@ export class BiscuitListComponent implements OnInit {
         this.isLoading = false;
       });
     }
+
     return this.biscuitService.getBiscuits().subscribe((data: Biscuit[]) => {
       this.biscuits = data;
       this.isLoading = false;

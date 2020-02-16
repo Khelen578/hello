@@ -11,6 +11,7 @@ import { catchError, retry } from 'rxjs/internal/operators';
 export class BiscuitService {
 
   public biscuits: Biscuit[];
+  public currentType: string;
   public categories = ['beurre', 'chocolat', 'fourrage anko', 'caramel', 'praliné'];
   beautyDisplay = true;
   // l'url de mon api
@@ -20,6 +21,14 @@ export class BiscuitService {
       'Content-Type': 'application/json'
     })
   };
+
+  setCurrentType(type: string) {
+    this.currentType = type;
+  }
+
+  getCurrentType(): string {
+    return this.currentType;
+  }
 
   // j'injecte le service angular HttpClient
   constructor(private toastr: ToastrService, private http: HttpClient) {
