@@ -5,9 +5,10 @@
         <h5 class="card-title text-center">{{biscuit.nom | titlecase}}</h5>
         <p class="card-text">Délicieux biscuits au {{biscuit.categorie}}.</p>
         <!-- <a [routerLink]="['/biscuit',biscuit.id]" class="btn btn-block btn-primary">Voir {{biscuit.nom}}</a> -->
-        <a [routerLink]="['/biscuit-form-edit',biscuit.id]" class="btn btn-block btn-text-center btn-primary">Editer
+        <a [routerLink]="['/biscuit-form-edit',biscuit.id]"
+            class="btn btn-block btn-text-center btn-primary edit-btn">Editer
             {{biscuit.nom | titlecase}}</a>
-        <button (click)="onDeleteBiscuit(biscuit)" class="btn btn-block btn-outline-danger">Supprimer
+        <button (click)="onDeleteBiscuit(biscuit)" class="btn btn-block btn-outline-danger delete-btn">Supprimer
             {{biscuit.nom | titlecase}}</button>
     </div>
 </div>
