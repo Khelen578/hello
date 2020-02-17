@@ -2,8 +2,8 @@
     <img class=" card-img-top img-fluid" [routerLink]="['/biscuit',biscuit.id]" [src]="biscuit.image"
         alt="image de biscuit">
     <div class="card-body">
-        <h5 class="card-title text-center">{{biscuit.nom | titlecase}}</h5>
-        <p class="card-text">Délicieux biscuits au {{biscuit.categorie}}.</p>
+        <h5 class="card-title text-center"><span class="biscuit-nom">{{biscuit.nom | titlecase}}</span></h5>
+        <p class="card-text">Délicieux biscuits au <span class="biscuit-categorie">{{biscuit.categorie}}</span>.</p>
         <!-- <a [routerLink]="['/biscuit',biscuit.id]" class="btn btn-block btn-primary">Voir {{biscuit.nom}}</a> -->
         <a [routerLink]="['/biscuit-form-edit',biscuit.id]"
             class="btn btn-block btn-text-center btn-primary edit-btn">Editer

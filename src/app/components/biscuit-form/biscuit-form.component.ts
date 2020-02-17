@@ -17,7 +17,7 @@ export class BiscuitFormComponent implements OnInit {
   constructor(private biscuitService: BiscuitService, private routeur: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.type = this.activatedRoute.snapshot.paramMap.get('type');
+    this.type = this.activatedRoute.snapshot.paramMap.get('type') || '';
     this.formBiscuit = new Biscuit();
     this.formBiscuit.categorie = this.type;
     this.categories = this.biscuitService.getBiscuitCategories();
@@ -26,13 +26,13 @@ export class BiscuitFormComponent implements OnInit {
   onSubmit() {
     this.biscuitService.addBiscuit(this.formBiscuit).subscribe(then => {
       this.biscuitService.showToast(`L'élément ${this.formBiscuit.nom} a bien été créé`, 'Création terminée', 1);
-      this.routeur.navigate((this.type === '' || this.type == null) ? ['/biscuits'] : ['/biscuits/type/', this.type]);
+      this.routeur.navigate((this.type === '') ? ['/biscuits'] : ['/biscuits/type/', this.type]);
     });
   }
 
   goBack() {
     // expression ternaire: (test) ? si vrai : si faux
-    this.routeur.navigate((this.type === '' || this.type == null) ? ['/biscuits'] : ['/biscuits/type/', this.type]);
+    this.routeur.navigate((this.type === '') ? ['/biscuits'] : ['/biscuits/type/', this.type]);
   }
 
 }

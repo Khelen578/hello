@@ -1,6 +1,6 @@
 <div class="container my-5 border p-5 col-md-6 col-xl-5">
     <form #biscuitValidation="ngForm" (ngSubmit)="onSubmit()">
-        <h3 class=" mb-5 text-center">Formulaire de création de biscuits <span *ngIf="type !== '' || type == null">au
+        <h3 class=" mb-5 text-center">Formulaire de création de biscuits <span *ngIf="type !== '' ">au
                 {{type}}</span>
         </h3>
         <div class="form-group">
@@ -10,7 +10,7 @@
             <div *ngIf="!name.valid" class="alert alert-danger">Veuillez saisir le nom</div>
 
         </div>
-        <div *ngIf="type === null || type == '' " class="form-group"> <label for="categorie">Categorie</label>
+        <div *ngIf=" type == '' " class="form-group"> <label for="categorie">Categorie</label>
             <select class="form-control" id="categorie" required [(ngModel)]="formBiscuit.categorie" name="categorie"
                 #categorie="ngModel">
                 <option value="" [selected]="!categorie.valid"> Choisissez une catégorie </option>

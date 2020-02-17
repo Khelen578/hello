@@ -1,4 +1,4 @@
-import { browser, element, logging, by } from 'protractor';
+import { browser, element, by } from 'protractor';
 import { BiscuitPage } from './biscuit.po';
 
 describe('test des buscuits', () => {
@@ -13,7 +13,7 @@ describe('test des buscuits', () => {
 
     it('Recherche le lien d\'ajout de biscuit et clique dessus', () => {
         element.all(by.css('.card')).then(totalRows => {
-            this.nbBiscuits = totalRows.length;
+            nbBiscuits = totalRows.length;
             element(by.css('#addBiscuitLink')).click();
             expect(browser.driver.getCurrentUrl()).toContain('biscuit-form');
         });
@@ -22,42 +22,41 @@ describe('test des buscuits', () => {
     it('Test du formulaire d\'ajout', () => {
         browser.get('/biscuit-form');
         page.completeAddForm();
-        let submitBtn = element.all(by.css('#submit-button'));
-        submitBtn.click().then(fn => {
+        const submitBtn = element.all(by.css('#submit-button'));
+        submitBtn.click().then(() => {
             element.all(by.css('.card')).then(totalNewRows => {
-                this.nbBiscuits += 1;
-                const compareBiscuit = this.nbBiscuits;
+                nbBiscuits += 1;
+                const compareBiscuit = nbBiscuits;
                 expect(totalNewRows.length).toEqual(compareBiscuit);
             });
         });
     });
 
+
     it('Test d\'edition', () => {
-        let lastDeleteButton = element.all(by.css('.delete-btn')).last();
-        lastDeleteButton.click().then(fn => {
-
-        });
-        expect(1).toEqual(1);
-
-    });
-
-    it('Test de la suppression', () => {
         page.sleep();
-        let lastEditButton = element.all(by.css('.edit-btn')).last();
+
+        const lastEditButton = element.all(by.css('.edit-btn')).last();
         lastEditButton.click().then(fn => {
             page.completeEditForm();
-            let submitBtn = element.all(by.css('#submit-button'));
-            submitBtn.click().then(fn => {
-
-
-            })
-            element.all(by.css('.card')).then(totalNewRows => {
-                this.nbBiscuits -= 1;
-                const compare = this.nbBiscuits;
-                expect(totalNewRows.length).toEqual(compare);
+            const submitBtn = element.all(by.css('#submit-button'));
+            submitBtn.click().then(() => {
+                const newName = element.all(by.css('.biscuit-nom')).last().getText();
+                const newCategorie = element.all(by.css('.biscuit-categorie')).last().getText();
+                expect(newName).toEqual('Test-edited');
+                expect(newCategorie).toEqual('chocolat');
             });
         });
     });
 
-
+    it('Test de suppression', () => {
+        const lastDeleteButton = element.all(by.css('.delete-btn')).last();
+        lastDeleteButton.click().then(() => {
+            element.all(by.css('.card')).then(totalNewRows => {
+                nbBiscuits -= 1;
+                const compare = nbBiscuits;
+                expect(totalNewRows.length).toEqual(compare);
+            });
+        });
+    });
 });
