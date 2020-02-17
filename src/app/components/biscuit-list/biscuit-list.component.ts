@@ -63,7 +63,7 @@ export class BiscuitListComponent implements OnInit {
 
       if (this.regExTypeSearch.test(this.url)) {
         this.search = this.activatedRoute.snapshot.paramMap.get('querry');
-        this.searchRegex = new RegExp(this.search.toUpperCase());
+        this.searchRegex = new RegExp(this.search.replace(/[^\w\s]/gi, '').toUpperCase());
         return this.biscuitService.getBiscuits().subscribe((data: Biscuit[]) => {
           this.biscuits = data.filter(biscuit => biscuit.categorie === this.type && this.searchRegex.test(biscuit.nom.toUpperCase()));
           this.isLoading = false;
@@ -77,7 +77,7 @@ export class BiscuitListComponent implements OnInit {
 
     } else if (this.regExName.test(this.url)) {
       this.search = this.activatedRoute.snapshot.paramMap.get('querry');
-      this.searchRegex = new RegExp(this.search.toUpperCase());
+      this.searchRegex = new RegExp(this.search.replace(/[^\w\s]/gi, '').toUpperCase());
       return this.biscuitService.getBiscuits().subscribe((data: Biscuit[]) => {
         this.biscuits = data.filter(biscuit => this.searchRegex.test(biscuit.nom.toUpperCase()));
         this.isLoading = false;
