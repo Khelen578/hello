@@ -32,8 +32,8 @@
                 <div *ngIf="!img.valid" class="alert alert-danger">Veuillez saisir l'url de l'image</div>
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-block btn-success" value="Valider et retourner à la liste"
-                    [disabled]="!biscuitValidation.valid">
+                <input type="submit" id="submit-button" class="btn btn-block btn-success"
+                    value="Valider et retourner à la liste" [disabled]="!biscuitValidation.valid">
             </div>
         </form>
     </div>

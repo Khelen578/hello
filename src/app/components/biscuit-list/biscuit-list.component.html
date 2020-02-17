@@ -9,7 +9,7 @@
     <div class="container">
         <div *ngIf="biscuits != []" class="row d-flex">
             <div class=" col-12 my-4 text-center ">
-                <h3 class=" mb-4" *ngIf="url == '/biscuits'">Tous les biscuits</h3>
+                <h3 class=" mb-4" *ngIf="url == '/biscuits'" id="titre">Tous les biscuits</h3>
                 <h3 class=" mb-4" *ngIf="regExType.test(url)">Biscuits au {{type | titlecase}}</h3>
                 <h3 class=" mb-4" *ngIf="regExName.test(url) || regExTypeSearch.test(url)">Resultats de la recherche
                     "{{search}}"
@@ -17,7 +17,7 @@
                     résultats trouvés <span *ngIf="regExTypeSearch.test(url)">dans {{type}}</span>)</h3><button
                     *ngIf="valideCategorie"
                     [routerLink]="(regExType.test(url)) ? ['/biscuit-form',type] : ['/biscuit-form','']"
-                    class="btn btn-success mb-3">Ajouter
+                    class="btn btn-success mb-3" id="addBiscuitLink">Ajouter
                     un
                     biscuit</button><button *ngIf="!mobile" (click)="changeDisplay()"
                     class="mb-3 btn btn-outline-primary ml-3">{{(beautyDisplay) ? 'Passer en Tableau' : 'Passer en Cartes'}}</button>
