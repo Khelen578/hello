@@ -50,7 +50,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let biscuit of biscuits">
+                    <tr *ngFor="let biscuit of biscuits | slice: (page-1) * pageSize : (page -1) * pageSize + pageSize">
                         <th class="first-col" scope="row" [routerLink]="['/biscuit',biscuit.id]">
                             {{biscuit.nom | titlecase}}</th>
                         <td>{{biscuit.categorie | titlecase}}</td>
