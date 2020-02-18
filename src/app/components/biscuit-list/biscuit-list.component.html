@@ -22,7 +22,7 @@
                     biscuit</button><button *ngIf="!mobile" (click)="changeDisplay()"
                     class="mb-2 btn btn-outline-primary ml-3">{{(beautyDisplay) ? 'Passer en Tableau' : 'Passer en Cartes'}}</button>
             </div>
-            <div class="col-8 mx-auto col-md-12">
+            <div class="col mx-auto col-md-12">
                 <ngb-pagination class="ml-5" [collectionSize]="biscuits.length" [pageSize]="pageSize" [(page)]="page"
                     [boundaryLinks]="true">
                 </ngb-pagination>
