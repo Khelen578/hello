@@ -8,24 +8,31 @@
 <ng-container *ngIf="!isLoading">
     <div class="container">
         <div *ngIf="biscuits != []" class="row d-flex">
-            <div class=" col-12 my-4 text-center ">
+            <div class=" col-12 my-1 text-center ">
                 <h3 class=" mb-4" *ngIf="url == '/biscuits'" id="titre">Tous les biscuits</h3>
                 <h3 class=" mb-4" *ngIf="regExType.test(url)">Biscuits au {{type | titlecase}}</h3>
-                <h3 class=" mb-4" *ngIf="regExName.test(url) || regExTypeSearch.test(url)">Resultats de la recherche
+                <h3 class=" mb-2" *ngIf="regExName.test(url) || regExTypeSearch.test(url)">Resultats de la recherche
                     "{{search}}"
                     ({{biscuits.length}}
                     résultats trouvés <span *ngIf="regExTypeSearch.test(url)">dans {{type}}</span>)</h3><button
                     *ngIf="valideCategorie"
                     [routerLink]="(regExType.test(url)) ? ['/biscuit-form',type] : ['/biscuit-form','']"
-                    class="btn btn-success mb-3" id="addBiscuitLink">Ajouter
+                    class="btn btn-success mb-2" id="addBiscuitLink">Ajouter
                     un
                     biscuit</button><button *ngIf="!mobile" (click)="changeDisplay()"
-                    class="mb-3 btn btn-outline-primary ml-3">{{(beautyDisplay) ? 'Passer en Tableau' : 'Passer en Cartes'}}</button>
+                    class="mb-2 btn btn-outline-primary ml-3">{{(beautyDisplay) ? 'Passer en Tableau' : 'Passer en Cartes'}}</button>
+            </div>
+            <div class="col-8 mx-auto col-md-12">
+                <ngb-pagination class="ml-5" [collectionSize]="biscuits.length" [pageSize]="pageSize" [(page)]="page"
+                    [boundaryLinks]="true">
+                </ngb-pagination>
+
             </div>
             <div class="col-12">
                 <div class="row text-center" *ngIf="beautyDisplay">
                     <app-biscuit [biscuit]="biscuit" (deleteEmitter)="deleteBiscuit($event)"
-                        *ngFor="let biscuit of biscuits" class="col-md-6 col-lg-4 col-xl-3 text-center">
+                        *ngFor="let biscuit of biscuits | slice: (page-1) * pageSize : (page -1) * pageSize + pageSize "
+                        class="col-md-6 col-lg-4 col-xl-3 text-center">
                     </app-biscuit>
                 </div>
             </div>

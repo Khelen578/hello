@@ -23,6 +23,8 @@ export class BiscuitListComponent implements OnInit {
   regExTypeSearch = /^\/biscuits\/.*\/.*\/.*/;
   searchRegex: RegExp;
   valideCategorie: boolean;
+  pageSize: number = 4;
+  page: number = 1;
 
   constructor(private biscuitService: BiscuitService, private activatedRoute: ActivatedRoute, private routeur: Router) {
     routeur.events.subscribe((event: Event) => {

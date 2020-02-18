@@ -20,6 +20,8 @@ import { CollapseModule } from 'ngx-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { AutofocusDirective } from './directives/autofocus.directive';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +38,7 @@ import { AutofocusDirective } from './directives/autofocus.directive';
     FormsModule,
     TooltipModule.forRoot(),
     BrowserModule,
+    NgbModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     CommonModule,
