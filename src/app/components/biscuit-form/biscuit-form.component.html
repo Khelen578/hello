@@ -1,6 +1,6 @@
-<div class="container my-5 border p-5 col-md-6 col-xl-5">
+<div class="container my-3 border p-5 col-md-6 col-xl-5">
     <form #biscuitValidation="ngForm" (ngSubmit)="onSubmit()">
-        <h3 class=" mb-5 text-center">Formulaire de création de biscuits <span *ngIf="type !== '' ">au
+        <h3 class=" mb-4 ">Formulaire de création de biscuits <span *ngIf="type !== '' ">au
                 {{type}}</span>
         </h3>
         <div class="form-group">
@@ -25,11 +25,9 @@
                 placeholder="url de l'image" #img="ngModel">
             <div *ngIf="!img.valid" class="alert alert-danger">Veuillez saisir l'url de l'image</div>
         </div>
-        <div class="form-group">
-            <input [disabled]="!biscuitValidation.valid" type="submit" class="btn btn-block btn-success"
-                value="Créer le biscuit" id="submit-button">
-        </div>
+        <button routerLink='/biscuits' class="btn btn-primary mt-3 ">Retourner à l'accueil</button>
+        <input id="submit-button" class="btn btn-success mt-3 ml-3" type="submit" [disabled]="!biscuitValidation.valid "
+            value=" Créer le biscuit">
 
     </form>
-    <button (click)="goBack()" class="btn btn-block  btn-primary">Retourner à la liste</button>
 </div>

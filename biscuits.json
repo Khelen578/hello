@@ -43,18 +43,6 @@
       "image": "assets/img/sablé-breton.jpg"
     },
     {
-      "categorie": "beurre",
-      "id": 9,
-      "nom": "biscuit",
-      "image": "assets/img/madeleine.jpg"
-    },
-    {
-      "categorie": "beurre",
-      "id": 11,
-      "nom": "fdqs qsfd fd",
-      "image": "assets/img/cookie.jpg"
-    },
-    {
       "categorie": "fourrage anko",
       "id": 12,
       "nom": "kibidango",
@@ -65,6 +53,18 @@
       "id": 13,
       "nom": "prince",
       "image": "assets/img/cookie.jpg"
+    },
+    {
+      "categorie": "caramel",
+      "id": 14,
+      "nom": "fsq",
+      "image": "assets/img/sablé-breton.jpg"
+    },
+    {
+      "categorie": "beurre",
+      "id": 15,
+      "nom": "Biscuit",
+      "image": "assets/img/sablé-breton.jpg"
     }
   ]
 }

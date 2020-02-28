@@ -6,7 +6,7 @@
     </div>
 </ng-container>
 <ng-container *ngIf="!isLoading">
-    <div class="container my-5 border p-5 col-md-6 col-xl-5">
+    <div class="container my-3 border p-5 col-md-7 col-xl-6">
         <form #biscuitValidation="ngForm" (ngSubmit)="onSubmit()">
             <h3 class="mb-5 text-center">Formulaire d'edition de biscuits</h3>
             <div class="form-group">
@@ -31,9 +31,11 @@
                     placeholder="url de l'image" #img="ngModel">
                 <div *ngIf="!img.valid" class="alert alert-danger">Veuillez saisir l'url de l'image</div>
             </div>
-            <div class="form-group">
-                <input type="submit" id="submit-button" class="btn btn-block btn-success"
-                    value="Valider et retourner à la liste" [disabled]="!biscuitValidation.valid">
+            <div class="text-center">
+                <button routerLink='/biscuits' class="btn btn-primary mt-3 ">Retourner à l'accueil</button>
+                <input id="submit-button" class="btn btn-success mt-3 ml-3"
+                    style="padding-left: 45px;padding-right: 45px;" type="submit" [disabled]="!biscuitValidation.valid "
+                    value="Valider">
             </div>
         </form>
     </div>

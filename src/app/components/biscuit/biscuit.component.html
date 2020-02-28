@@ -4,11 +4,27 @@
     <div class="card-body">
         <h5 class="card-title text-center"><span class="biscuit-nom">{{biscuit.nom | titlecase}}</span></h5>
         <p class="card-text">Délicieux biscuits au <span class="biscuit-categorie">{{biscuit.categorie}}</span>.</p>
-        <!-- <a [routerLink]="['/biscuit',biscuit.id]" class="btn btn-block btn-primary">Voir {{biscuit.nom}}</a> -->
-        <a [routerLink]="['/biscuit-form-edit',biscuit.id]"
-            class="btn btn-block btn-text-center btn-primary edit-btn">Editer
-            {{biscuit.nom | titlecase}}</a>
-        <button (click)="onDeleteBiscuit(biscuit)" class="btn btn-block btn-outline-danger delete-btn">Supprimer
-            {{biscuit.nom | titlecase}}</button>
+
+    </div>
+    <div class="mb-3">
+        <a [routerLink]="['/biscuit-form-edit',biscuit.id]" class="btn btn-primary" style="color: white;">Modifier
+        </a><a (click)="openModal(template)" class="btn btn-outline-danger ml-2">Supprimer</a>
     </div>
 </div>
+
+
+
+<ng-template #template>
+
+    <div class="modal-content text-center">
+
+        <div class=" modal-body ">
+            Voulez vous vraiment supprimer le biscuit "{{biscuit.nom}}"? <div class="text-center">
+                <button (click)="this.modalRef.hide();" class="btn btn-primary mt-3 ">Annuler</button>
+                <button class="btn btn-danger mt-3 ml-3" (click)="onDeleteBiscuit()">Supprimer</button>
+            </div>
+        </div>
+
+    </div>
+
+</ng-template>

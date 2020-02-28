@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
 import { Biscuit } from 'src/app/models/biscuit';
-
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-biscuit',
@@ -11,14 +11,20 @@ export class BiscuitComponent implements OnInit {
 
   @Input() biscuit: Biscuit;
   @Output() deleteEmitter: EventEmitter<Biscuit> = new EventEmitter<Biscuit>();
-  constructor() { }
+  modalRef: BsModalRef;
+  constructor(private modalService: BsModalService) { }
 
   ngOnInit() {
 
   }
 
   onDeleteBiscuit(biscuit: Biscuit) {
-    this.deleteEmitter.emit(biscuit);
+    this.deleteEmitter.emit(this.biscuit);
+    this.modalRef.hide();
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
   }
 
 }

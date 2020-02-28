@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AutofocusDirective } from './directives/autofocus.directive';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CommonModule,
     ToastrModule.forRoot(), // ToastrModule added
     CollapseModule,
-    HttpClientModule
+    HttpClientModule,
+    ModalModule.forRoot()
   ],
   providers: [ReplacePipe],
   bootstrap: [AppComponent]

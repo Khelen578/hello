@@ -6,7 +6,7 @@
     </div>
 </ng-container>
 <ng-container *ngIf="!isLoading">
-    <div class="container">
+    <div class="container-md container-fluid">
         <div *ngIf="biscuits != []" class="row d-flex">
             <div class=" col-12 my-1 text-center ">
                 <h3 class=" mb-4" *ngIf="url == '/biscuits'" id="titre">Tous les biscuits</h3>
@@ -32,7 +32,7 @@
                 <div class="row text-center" *ngIf="beautyDisplay">
                     <app-biscuit [biscuit]="biscuit" (deleteEmitter)="deleteBiscuit($event)"
                         *ngFor="let biscuit of biscuits | slice: (page-1) * pageSize : (page -1) * pageSize + pageSize "
-                        class="col-md-6 col-lg-4 col-xl-3 text-center">
+                        class="col-sm-6 col-lg-4 col-xl-3 text-center">
                     </app-biscuit>
                 </div>
             </div>
