@@ -22,6 +22,7 @@ import { AutofocusDirective } from './directives/autofocus.directive';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     BiscuitFormEditComponent,
     ReplacePipe,
     AutofocusDirective,
+    NotFoundComponent,
   ],
   imports: [
     FormsModule,
