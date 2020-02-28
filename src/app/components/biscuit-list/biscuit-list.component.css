@@ -13,3 +13,6 @@ th[scope="row"]:hover{
     font-style: italic;
     cursor: pointer;
 }
+.btn{
+    border-radius: 0;
+}

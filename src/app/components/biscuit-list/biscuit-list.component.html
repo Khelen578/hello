@@ -58,7 +58,7 @@
                         </td>
                         <td><button class="btn" [routerLink]="['/biscuit-form-edit',biscuit.id]">Editer</button>
                         </td>
-                        <td><button class="btn" (click)="deleteBiscuit(biscuit)">Supprimer</button>
+                        <td><button class="btn" (click)="openModal(template,biscuit)">Supprimer</button>
                         </td>
                     </tr>
                 </tbody>
@@ -68,5 +68,21 @@
             <div class="alert alert-danger text-center">Aucun biscuit à afficher !</div>
         </div>
     </div>
+
+    <ng-template #template>
+
+        <div class="modal-content text-center">
+
+            <div class=" modal-body ">
+                Voulez vous vraiment supprimer le biscuit "{{currentBiscuit.nom}}"? <div class="text-center">
+                    <button (click)="this.modalRef.hide();" class="btn btn-primary mt-3 ">Annuler</button>
+                    <button class="btn btn-danger mt-3 ml-3"
+                        (click)="onDeleteBiscuit(currentBiscuit)">Supprimer</button>
+                </div>
+            </div>
+
+        </div>
+
+    </ng-template>
 
 </ng-container>
