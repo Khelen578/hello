@@ -1,7 +1,7 @@
 <div style="display:flex;justify-content:center;align-items:center;height:90%">
 	<div style="width:250px;height:350px;" class="mt-5">
 		<form id="connection" #loginValidation="ngForm" (ngSubmit)="onLogin()" class="form-group">
-			<input autofocus [(ngModel)]="loginUser.login" name="login" autofocus type="text"
+			<input appAutofocus [(ngModel)]="loginUser.login" name="login" autofocus type="text"
 				class="form-control text-center mb-1 " required placeholder="login" #loginValidation="ngModel">
 			<input [(ngModel)]="loginUser.password" id="password" name="password" type="password"
 				class="form-control text-center mb-1 " required placeholder="mot de passe"
