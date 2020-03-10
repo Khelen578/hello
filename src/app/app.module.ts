@@ -23,6 +23,7 @@ import { AutofocusDirective } from './directives/autofocus.directive';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     ReplacePipe,
     AutofocusDirective,
     NotFoundComponent,
+    LoginComponent,
   ],
   imports: [
     FormsModule,
