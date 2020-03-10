@@ -3,6 +3,7 @@ import { Biscuit } from 'src/app/models/biscuit';
 import { BiscuitService } from 'src/app/services/biscuit.service';
 import { ActivatedRoute, Router, Event, NavigationEnd, NavigationError } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class BiscuitListComponent implements OnInit {
   pageSize: number = 4;
   page: number = 1;
 
-  constructor(private biscuitService: BiscuitService, private activatedRoute: ActivatedRoute, private routeur: Router,
+  constructor(private biscuitService: BiscuitService,private authService: AuthService, private activatedRoute: ActivatedRoute, private routeur: Router,
     private modalService: BsModalService) {
     routeur.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
@@ -59,8 +60,13 @@ export class BiscuitListComponent implements OnInit {
   }
 
   openModal(template: TemplateRef<any>, biscuit: Biscuit) {
-    this.currentBiscuit = biscuit;
-    this.modalRef = this.modalService.show(template);
+    if (this.authService.getIsAuth()) {
+      this.currentBiscuit = biscuit;
+      this.modalRef = this.modalService.show(template);
+      } else {
+        this.routeur.navigate(['/login']);
+      }
+    
   }
 
   refreshBiscuits() {
