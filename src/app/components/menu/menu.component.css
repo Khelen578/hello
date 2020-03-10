@@ -1,7 +1,7 @@
 .navbar-brand{
     color: white!important;
 }
-.navbar-brand:hover{
+.navbar-brand:hover,.nav-link:hover{
     cursor: pointer;
 }
 input{

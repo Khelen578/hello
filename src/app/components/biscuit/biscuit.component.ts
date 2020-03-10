@@ -14,7 +14,7 @@ export class BiscuitComponent implements OnInit {
   @Input() biscuit: Biscuit;
   @Output() deleteEmitter: EventEmitter<Biscuit> = new EventEmitter<Biscuit>();
   modalRef: BsModalRef;
-  constructor(private modalService: BsModalService,private routeur: Router,private authService: AuthService) { }
+  constructor(private modalService: BsModalService, private routeur: Router, private authService: AuthService) { }
 
   ngOnInit() {
 

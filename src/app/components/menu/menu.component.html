@@ -12,6 +12,9 @@
                     routerLinkActive=" active">Au
                     {{categorie | titlecase}}</a>
             </li>
+            <li class="nav-item ml-lg-auto" style="margin-left: auto;">
+                <a class="nav-link float-right"(click)="loginOrLogout()">{{(isAuth) ? 'Se déconnecter' : 'Se connecter' }}</a>
+            </li>
         </ul>
         <div class="mx-auto mx-md-0">
             <form class="form-inline my-2 my-lg-0 ">

@@ -27,11 +27,11 @@ export class BiscuitListComponent implements OnInit {
   regExTypeSearch = /^\/biscuits\/.*\/.*\/.*/;
   searchRegex: RegExp;
   valideCategorie: boolean;
-  pageSize: number = 4;
-  page: number = 1;
+  pageSize = 4;
+  page = 1;
 
-  constructor(private biscuitService: BiscuitService,private authService: AuthService, private activatedRoute: ActivatedRoute, private routeur: Router,
-    private modalService: BsModalService) {
+  constructor( private biscuitService: BiscuitService, private authService: AuthService
+    , private activatedRoute: ActivatedRoute, private routeur: Router, private modalService: BsModalService) {
     routeur.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         this.refreshBiscuits();
@@ -66,7 +66,6 @@ export class BiscuitListComponent implements OnInit {
       } else {
         this.routeur.navigate(['/login']);
       }
-    
   }
 
   refreshBiscuits() {

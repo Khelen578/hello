@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BiscuitService } from 'src/app/services/biscuit.service';
 import { Router, Event, NavigationEnd, NavigationError, ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -15,12 +16,14 @@ export class MenuComponent implements OnInit {
   isCollapsed = true;
   categories: string[];
   regExType = /^\/biscuits\/type.*/;
+  isAuth: boolean;
 
-
-  constructor(private routeur: Router, private biscuitService: BiscuitService, private activatedRoute: ActivatedRoute) {
+  constructor(private routeur: Router, private biscuitService: BiscuitService, private activatedRoute: ActivatedRoute
+    , private authService: AuthService) {
     routeur.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         this.refreshUrl();
+        this.isAuth = this.authService.getIsAuth();
       }
       if (event instanceof NavigationError) {
         console.log(event.error);
@@ -31,7 +34,18 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     this.type = '';
     this.refreshUrl();
+    this.isAuth = this.authService.getIsAuth();
     this.categories = this.biscuitService.getBiscuitCategories();
+  }
+
+  loginOrLogout() {
+    if (this.authService.getIsAuth()) {
+      this.authService.logout();
+      this.isAuth = false;
+      this.routeur.navigate(['/biscuits']);
+    } else {
+      this.routeur.navigate(['/login']);
+    }
   }
 
   onClick($event) {
