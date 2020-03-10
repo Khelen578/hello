@@ -22,17 +22,11 @@
                     biscuit</button><button *ngIf="!mobile" (click)="changeDisplay()"
                     class="mb-2 btn btn-outline-primary ml-3">{{(beautyDisplay) ? 'Passer en Tableau' : 'Passer en Cartes'}}</button>
             </div>
-            <div class="col mx-auto col-md-12">
-                <ngb-pagination class="ml-5" [collectionSize]="biscuits.length" [pageSize]="pageSize" [(page)]="page"
-                    [boundaryLinks]="true">
-                </ngb-pagination>
 
-            </div>
-            <div class="col-12">
+            <div class="col-12 mt-4">
                 <div class="row text-center" *ngIf="beautyDisplay">
                     <app-biscuit [biscuit]="biscuit" (deleteEmitter)="deleteBiscuit($event)"
-                        *ngFor="let biscuit of biscuits | slice: (page-1) * pageSize : (page -1) * pageSize + pageSize "
-                        class="col-sm-6 col-lg-4 col-xl-3 text-center">
+                        *ngFor="let biscuit of biscuits " class="col-sm-6 col-lg-4 col-xl-3 text-center">
                     </app-biscuit>
                 </div>
             </div>

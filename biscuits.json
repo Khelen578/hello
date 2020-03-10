@@ -66,5 +66,12 @@
       "nom": "Biscuit",
       "image": "assets/img/sablé-breton.jpg"
     }
+  ],
+  "users": [
+    {
+      "login": "kiichigo",
+      "id": 1,
+      "password": "f2b12fb3c6a97fdf60bd25ffb3007a59"
+    }
   ]
 }
