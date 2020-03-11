@@ -7,9 +7,9 @@
 
     </div>
     <div class="mb-3">
-        <a (click)="(isAuth) ? navigate() : openModal(auth) " class=" btn
+        <a (click)="checkAuth(template,auth)" class=" btn
             btn-primary" style="color: white;">Modifier
-        </a><a (click)="(isAuth) ? openModal(template) : openModal(auth)"
+        </a><a (click)="checkAuth(template,auth)"
             class="btn btn-outline-danger ml-2">Supprimer</a>
     </div>
 </div>

@@ -28,6 +28,13 @@ export class BiscuitComponent implements OnInit {
     this.isAuth = this.authService.getIsAuth();
   }
 
+  checkAuth(template: TemplateRef<any>, auth: TemplateRef<any>){
+    if (this.authService.getIsAuth()) {
+      this.modalRef = this.modalService.show(template);
+    } else {
+      this.modalRef = this.modalService.show(auth);
+    }
+  }
   onDeleteBiscuit(biscuit: Biscuit) {
     this.deleteEmitter.emit(this.biscuit);
     this.modalRef.hide();
@@ -40,10 +47,6 @@ export class BiscuitComponent implements OnInit {
 
   navigate() {
     this.routeur.navigate(['/biscuit-form-edit', this.biscuit.id]);
-  }
-
-  openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
   }
 
 }
