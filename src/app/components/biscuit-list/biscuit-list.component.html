@@ -50,9 +50,9 @@
                         <td>{{biscuit.categorie | titlecase}}</td>
                         <td><img [src]="biscuit.image" alt="biscuit">
                         </td>
-                        <td><button class="btn" [routerLink]="['/biscuit-form-edit',biscuit.id]">Editer</button>
+                        <td><button class="btn" (click)="checkAuth('update',template,auth,biscuit)" >Editer</button>
                         </td>
-                        <td><button class="btn" (click)="openModal(template,biscuit)">Supprimer</button>
+                        <td><button class="btn" (click)="checkAuth('delete',template,auth, biscuit)">Supprimer</button>
                         </td>
                     </tr>
                 </tbody>
@@ -77,6 +77,23 @@
 
         </div>
 
+    </ng-template>
+
+    <ng-template #auth>
+
+        <div class="modal-content text-center">
+    
+            <div class=" modal-body ">
+                Pour effectuer cette action, vous devez vous connecter, souhaitez vous vous connecter ? <div
+                    class="text-center">
+                    <button class="btn btn-success mt-3 mr-3" (click)="onLogin()">Se
+                        connecter</button>
+                    <button (click)="this.modalRef.hide();" class="btn btn-primary mt-3 ">Annuler</button>
+                </div>
+            </div>
+    
+        </div>
+    
     </ng-template>
 
 </ng-container>

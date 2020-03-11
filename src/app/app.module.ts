@@ -24,6 +24,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { LoginComponent } from './components/login/login.component';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { LoginComponent } from './components/login/login.component';
     ToastrModule.forRoot(), // ToastrModule added
     CollapseModule,
     HttpClientModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    BsDropdownModule.forRoot()
   ],
   providers: [ReplacePipe],
   bootstrap: [AppComponent]

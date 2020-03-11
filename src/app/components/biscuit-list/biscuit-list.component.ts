@@ -59,6 +59,20 @@ export class BiscuitListComponent implements OnInit {
     this.modalRef.hide();
   }
 
+  checkAuth(destination: string, template: TemplateRef<any>, auth: TemplateRef<any>, biscuit: Biscuit){
+    if (this.authService.getIsAuth()) {
+      (destination === 'update') ? this.routeur.navigate(['biscuit-form-edit', biscuit.id])
+      : this.modalRef = this.modalService.show(template);
+    } else {
+      this.modalRef = this.modalService.show(auth);
+    }
+  }
+
+  onLogin() {
+    this.modalRef.hide();
+    this.routeur.navigate(['/login']);
+  }
+
   openModal(template: TemplateRef<any>, biscuit: Biscuit) {
     if (this.authService.getIsAuth()) {
       this.currentBiscuit = biscuit;

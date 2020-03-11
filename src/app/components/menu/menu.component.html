@@ -12,12 +12,26 @@
                     routerLinkActive=" active">Au
                     {{categorie | titlecase}}</a>
             </li>
-            <li class="nav-item " >
-                <a class="nav-link "(click)="loginOrLogout()">{{(isAuth) ? 'Se déconnecter' : 'Se connecter' }}</a>
-            </li>
+            
         </ul>
+        <ul class="navbar-nav mr-lg-2 mt-2 mt-lg-0 text-center ml-lg-auto">
+              <div *ngIf="isAuth"  class="btn-group" dropdown>
+                <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+                        aria-controls="dropdown-basic">
+                  Connecté entant que kiichigo <span class="caret"></span>
+                </button>
+                <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu dropdown-menu-right"
+                    role="menu" aria-labelledby="button-basic">
+                  <li role="menuitem"><a class="nav-link ml-lg-auto text-dark" (click)="loginOrLogout()">{{(isAuth) ? 'Se déconnecter' : 'Se connecter' }}</a></li>
+                </ul>
+              </div>
+              <a *ngIf="!isAuth" class="nav-link ml-lg-auto text-light" (click)="loginOrLogout()">{{(isAuth) ? 'Se déconnecter' : 'Se connecter' }}</a>
+        </ul>
+        
         <div class="mx-auto mx-md-0">
+            
             <form class="form-inline my-2 my-lg-0 ">
+                
                 <input class="form-control text-center  ml-lg-auto  mx-auto " type="search" name="search"
                     placeholder="Rechercher un biscuit" aria-label="Search" required [(ngModel)]="search"
                     (keyup)="onSubmit()">

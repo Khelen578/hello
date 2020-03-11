@@ -17,8 +17,8 @@ const routes: Routes = [
   { path: 'biscuits/type/:type', component: BiscuitListComponent },
   { path: 'biscuits/search/:querry', component: BiscuitListComponent },
   { path: 'biscuit-form', canActivate: [AuthGuard], component: BiscuitFormComponent },
-  { path: 'biscuit-form/:type', canActivate: [AuthGuard], component: BiscuitFormComponent },
-  { path: 'biscuit-form-edit/:id', canActivate: [AuthGuard], component: BiscuitFormEditComponent },
+  { path: 'biscuit-form/:type', component: BiscuitFormComponent },
+  { path: 'biscuit-form-edit/:id', component: BiscuitFormEditComponent },
   { path: 'biscuit/:id', component: BiscuitDetailComponent },
   { path: '**', component: NotFoundComponent }
 ];
