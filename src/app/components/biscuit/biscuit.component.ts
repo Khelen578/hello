@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, TemplateRef } from '@angular/core';
 import { Biscuit } from 'src/app/models/biscuit';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { Router } from '@angular/router';
+import { Router, Event, NavigationEnd } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -14,10 +14,18 @@ export class BiscuitComponent implements OnInit {
   @Input() biscuit: Biscuit;
   @Output() deleteEmitter: EventEmitter<Biscuit> = new EventEmitter<Biscuit>();
   modalRef: BsModalRef;
-  constructor(private modalService: BsModalService, private routeur: Router, private authService: AuthService) { }
+  isAuth = false;
+
+  constructor(private modalService: BsModalService, private routeur: Router, private authService: AuthService) {
+    routeur.events.subscribe((event: Event) => {
+      if (event instanceof NavigationEnd) {
+        this.isAuth = this.authService.getIsAuth();
+      }
+    });
+  }
 
   ngOnInit() {
-
+    this.isAuth = this.authService.getIsAuth();
   }
 
   onDeleteBiscuit(biscuit: Biscuit) {
@@ -25,12 +33,17 @@ export class BiscuitComponent implements OnInit {
     this.modalRef.hide();
   }
 
+  onLogin() {
+    this.modalRef.hide();
+    this.routeur.navigate(['/login']);
+  }
+
+  navigate() {
+    this.routeur.navigate(['/biscuit-form-edit', this.biscuit.id]);
+  }
+
   openModal(template: TemplateRef<any>) {
-    if (this.authService.getIsAuth()) {
-      this.modalRef = this.modalService.show(template);
-      } else {
-        this.routeur.navigate(['/login']);
-      }
+    this.modalRef = this.modalService.show(template);
   }
 
 }

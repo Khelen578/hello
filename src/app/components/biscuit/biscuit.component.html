@@ -7,8 +7,10 @@
 
     </div>
     <div class="mb-3">
-        <a [routerLink]="['/biscuit-form-edit',biscuit.id]" class="btn btn-primary" style="color: white;">Modifier
-        </a><a (click)="openModal(template)" class="btn btn-outline-danger ml-2">Supprimer</a>
+        <a (click)="(isAuth) ? navigate() : openModal(auth) " class=" btn
+            btn-primary" style="color: white;">Modifier
+        </a><a (click)="(isAuth) ? openModal(template) : openModal(auth)"
+            class="btn btn-outline-danger ml-2">Supprimer</a>
     </div>
 </div>
 
@@ -21,7 +23,25 @@
         <div class=" modal-body ">
             Voulez vous vraiment supprimer le biscuit "{{biscuit.nom}}"? <div class="text-center">
                 <button (click)="this.modalRef.hide();" class="btn btn-primary mt-3 ">Annuler</button>
-                <button class="btn btn-danger mt-3 ml-3" (click)="onDeleteBiscuit()">Supprimer</button>
+                <button [disabled]="!isAuth" class="btn btn-danger mt-3 ml-3"
+                    (click)="onDeleteBiscuit()">Supprimer</button>
+            </div>
+        </div>
+
+    </div>
+
+</ng-template>
+
+<ng-template #auth>
+
+    <div class="modal-content text-center">
+
+        <div class=" modal-body ">
+            Pour effectuer cette action, vous devez vous connecter, souhaitez vous vous connecter ? <div
+                class="text-center">
+                <button class="btn btn-success mt-3 mr-3" (click)="onLogin()">Se
+                    connecter</button>
+                <button (click)="this.modalRef.hide();" class="btn btn-primary mt-3 ">Annuler</button>
             </div>
         </div>
 
